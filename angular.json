@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "iniciando-angular2-sete"
+    }
+  },
+  "defaultProject": "iniciando-angular2-sete",
+  "cli": {
+    "analytics": false
+  }
 }
