@@ -63,6 +63,19 @@
   * Getstared ```https://angular.io/start```
   
 ## Componentes
+  Um componente controla um pedaço de tela chamado ```view```. Por exemplo, componentes individuais definem e controlam suas próprias views
+  - Referência ```https://angular.io/guide/architecture-components```
+  - Metadados @Component define uma simples classe como um Componente em angular:
+    ```
+    @Component({
+      selector:    'app-hero-list',
+      templateUrl: './hero-list.component.html',
+      providers:  [ HeroService ]
+    })
+    export class HeroListComponent implements OnInit {
+    /* . . . */
+    }
+    ```
   - Angular sempre trabalha com uma hieraquia de componentes:
     ```
       -- AppComponent
@@ -91,3 +104,25 @@
     ```
   - O componente Raiz chama-se <app-root></app-root> contido no index.html por default. E pode ser manipulado através do arquivo app.component.(html|scss|ts) na pasta src/app. O app.component é importado e inicializado pelos módulo ```platformBrowserDynamic().bootstrapModule(AppModule)``` que dá sentido a aplicação
 
+## Entendendo melhor os componentes
+  - Bootstrap do Angular:
+    * Um arquivo typescript importa e carrega os módulos da platformBrowser browser dentro de ```main.ts```
+    * Que por sua vez chama o ```app.module``` com o método ````platformBrowserDynamic().bootstrapModule(AppModule```
+    * Importa o @decoration ```ngModule``` no package ```@angular/core```
+    * Configura e importa o app.module(modulo principal)
+    * E no ```@ngModule()``` ele carrega na chave bootstrap o ```AppComponent```
+
+## Data Binding 
+  - Ligações entre Model e View
+  - Referência ```https://angular.io/guide/architecture-components#data-binding```
+  - {{ }} - Interpolação
+    * Funciona com document.write() do JS
+    * {{ 2+2 }}
+  - [] - Data Binding
+    * Valores das propriedades do Model podem ser acessadas.
+    * <input [value]="modelPropValue">
+  - () - Event Binding 
+    * Cria um ligação da view para o model. Evento emitidos no html podem chamar métodos do Model
+    * <input (click)="callMethodFromModel($event)">
+  - [(ngModel)] - Two way data binding (precisa importar FormModule em app.module )
+  

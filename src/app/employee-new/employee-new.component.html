@@ -1,0 +1,17 @@
+<label for="name">Name:</label>
+<input type="text" [value]="name"/> 
+<br>
+<label for="name">Last Name:</label>
+<input type="text" [(ngModel)]="lastName"/>
+
+<h4>{{name}}</h4>
+<h4>{{lastName}}</h4>
+<h4>{{2+2}}</h4>
+
+
+
+<!-- [name] - responde ao Component(Model)-->
+<!-- (name) - View se comunica com Model-->
+<!-- A diretiva [(ngModel)] do pacote @angular/forms interfere no inputElement, torna-o reativo (modifica view e model)-->
+
+
