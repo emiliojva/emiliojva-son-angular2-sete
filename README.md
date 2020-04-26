@@ -72,7 +72,22 @@
           (...)
     ```
   
-  - Criando um componente (via ng cli) (nome dos Components no kebeb-style) (g: generation)
+  - Criando um componente (via ng cli) (nome dos Components no kebab-style) (g: generation)
     ```
     ng g component employee-list
     ```
+  - View Html do Component Employee-list
+    ```
+    <section>
+      <employee-list>1</employee-list>
+      <employee-list>2</employee-list>
+      <employee-list>3</employee-list>
+      <employee-list>4</employee-list>
+    </section>
+    ```
+  - Dentro do html do component employee-list, edito o html e o mesmo será replicado onde o componente for chamado na forma:
+    ```
+    <employee-list></employe-list>
+    ```
+  - O componente Raiz chama-se <app-root></app-root> contido no index.html por default. E pode ser manipulado através do arquivo app.component.(html|scss|ts) na pasta src/app. O app.component é importado e inicializado pelos módulo ```platformBrowserDynamic().bootstrapModule(AppModule)``` que dá sentido a aplicação
+
