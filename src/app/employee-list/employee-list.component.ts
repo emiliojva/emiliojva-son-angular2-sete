@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Employee } from '../mocks/employees';
+import {employees} from '../mocks/employees';
 
 @Component({
   selector: 'employee-list',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee-list.component.scss']
 })
 export class EmployeeListComponent implements OnInit {
+
+  employees: Array<Employee> = employees;
 
   constructor() { }
 

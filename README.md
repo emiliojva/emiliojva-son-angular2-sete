@@ -1,4 +1,3 @@
-# 
 # SON - Iniciando com Angular2 - Versão 7 
   Angular é uma plataforma de desenvolvimento para a construção de aplicativos Web e dispositivos móveis usando TypeScript / JavaScript e outros linguagens.
   - Site ```https://angular.io```
@@ -7,8 +6,11 @@
   - Repositório Team ```https://github.com/angular/angular```
   - ChangeLo - ```https://github.com/angular/angular/blob/master/CHANGELOG.md```
   - Quick Start ```https://angular.io/start```
+
+## Repositório do projeto
+- Repositório GIT ```https://github.com/emiliojva/emiliojva-son-angular2-sete```  
   
-  
+
 ## Notas da Versão 
   - Lançada meado de outubro
   - Adição da feature virtual scroll
@@ -152,4 +154,33 @@
     <input type="text" [value]="name" [(ngModel)]="name"/>
     ```
   
+  ## Listando coleção de dados
+
+  - Adicionando mockFile para ser compartilhado com dois componentes
+    ```
+    export interface Employee
+    {
+      name: string;
+      salary: number;
+    }
+    export const employees: Array<Employee> = [];
+    ``` 
+  - Importando módulo mock.employees Adicionando novo empregado (EmployeeNew):
+    ```
+    import {employees as employeesMock, Employee} from '../mocks/employees';
+    employees:Array<Employee> = employeesMock;
+    addEmployee(event){
+      // this.employees.push(this.name);
+      this.employees.push({name:this.name, salary:this.salary});
+      console.log(this.employees);
+    }
+    ```
+  - Listando dados adicionados na coleção mock.employees (View EmployeeList)
+    ```
+    <div class="employee-card" *ngFor="let emp of employees">
+      <div [innerHTML]=" 'Name:'+ emp.name "></div>
+      <div [innerHTML]=" 'Salary:'+ emp.salary "></div>
+    </div>
+
+    ```
 
