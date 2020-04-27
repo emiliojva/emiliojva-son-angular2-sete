@@ -11,9 +11,13 @@ export class EmployeeListComponent implements OnInit {
 
   employees: Array<Employee> = employees;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+  }
+
+  getSalaryColor(employee: Employee){
+    return employee.salary > 1000 ? 'green' : 'black';
   }
 
 }

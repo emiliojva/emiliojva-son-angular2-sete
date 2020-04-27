@@ -154,7 +154,7 @@
     <input type="text" [value]="name" [(ngModel)]="name"/>
     ```
   
-  ## Listando coleção de dados
+  ## Lidando com coleção de dados
 
   - Adicionando mockFile para ser compartilhado com dois componentes
     ```
@@ -183,4 +183,23 @@
     </div>
 
     ```
-
+## Brincando com propriedades reativas
+  - Reatividade das propriedades DOM do elemento. Modificando estilos inline
+    ```
+    [style.color]="getSalaryColor()"
+    ```
+  - Reatividade das classes html de um elemento. Modificando estilos por critério de classes definidas. ex: .salary-expansive {color:green} 
+    ```
+    [ngClass]="{
+                    'salary-expansive':emp.salary>1000,
+                    'salary-cheap':emp.salary<1000
+                }"
+    ``` 
+## Mostrar ou esconder elementos
+  - Diretiva ```[hidden]``` aplica um display:none no elemento de acordo com o boolean retornado na expressão
+    ```
+    <div [hidden]="employee.salary<1000">
+      <label for="bonus">Bonus:</label>
+      <input type="number" [(ngModel)]="employee.bonus"/>
+    </div>
+    ```

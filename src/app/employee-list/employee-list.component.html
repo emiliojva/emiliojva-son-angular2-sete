@@ -9,7 +9,19 @@
     <!-- <div>Name: {{ emp.name }}</div> -->
     <div [innerHTML]=" 'Name:'+ emp.name "></div>
     <!-- <div>Salary: {{ emp.salary }}</div> -->
-    <div [innerHTML]=" 'Salary:'+ emp.salary "></div>
+    <div
+      [innerHTML]=" 'Salary:'+ emp.salary "
+      [style.color]="getSalaryColor(emp)"
+      [ngClass]="{
+                  'salary-expansive':emp.salary>1000,
+                  'salary-cheap':emp.salary<1000
+                }">
+    </div>
+
+    <div
+      *ngIf="emp.bonus"
+      [innerHTML]=" 'Bonus:'+ emp.bonus ">
+    </div>
   </div>
 
 </section>

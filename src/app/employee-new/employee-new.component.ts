@@ -8,21 +8,28 @@ import {employees as employeesMock, Employee} from '../mocks/employees';
 })
 export class EmployeeNewComponent implements OnInit {
 
-  public name:string = ''; // property bind []
-  public salary:number = 0;
+  employee: Employee;
+  // public name:string = ''; // property bind []
+  // public salary:number = 0;
   public lastName:string = ''; // reativa [(ngModel)]
   // employees:Array<any> = [];
   employees:Array<Employee> = employeesMock;
 
   constructor() {
     // setTimeout(()=>{ this.name = "Mateus meu filho lindo" },3000)
+    this.employee = {name:'',salary:0};
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   addEmployee(event){
+
+    let copy = Object.assign({},this.employee);
     // this.employees.push(this.name);
-    this.employees.push({name:this.name, salary:this.salary});
+    copy.salary = copy.salary >= 1000 ? 0 : copy.bonus;
+    this.employees.push(copy);
     console.log(this.employees);
   }
 
