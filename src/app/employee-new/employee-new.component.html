@@ -1,8 +1,12 @@
 <label for="name">Name:</label>
-<input type="text" [value]="name"/> 
+<input type="text" [(ngModel)]="name"/>
 <br>
 <label for="name">Last Name:</label>
 <input type="text" [(ngModel)]="lastName"/>
+
+<button type="button" (click)="addEmployee($event)">adicionar</button>
+
+{{ echo() }}
 
 <h4>{{name}}</h4>
 <h4>{{lastName}}</h4>

@@ -126,3 +126,30 @@
     * <input (click)="callMethodFromModel($event)">
   - [(ngModel)] - Two way data binding (precisa importar FormModule em app.module )
   
+## Disparando eventos
+  Conhecido como Event Binding. Usa-se a notaçao ```()``` para definir a comunicação com algum método do Model.
+  - Para capturar o Handle do evento passa a palavra reservada ```$event``` com paramentro do método chamado no elemennto html
+  - Exemplo adicionando empregado e exibindo sem pipe json.
+    ```
+    // model EmployeeNew
+    employees:Array<any> = [];
+    addEmployee(event){
+      this.employees.push(this.name);
+      console.log(this.employees , event.target);
+    }
+
+    echo(){
+      return JSON.stringify(this.employees);
+    }
+
+    // employee-new.component.html
+    <input type="text" [(ngModel)]="name"/>
+    <button type="button" (click)="addEmployee($event)">adicionar</button>
+    {{ echo() }}
+    ```
+  - No two way data binding poderia se usar uma propriedade com outro nome para capturar o valor do input. Mas fica muito mais fluído e performatico atribuir a propriedade no proprio ngModel. Poderia fazer desta forma também:
+    ```
+    <input type="text" [value]="name" [(ngModel)]="name"/>
+    ```
+  
+
