@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {employees as employeesMock, Employee} from '../mocks/employees';
+import { EmployeeService, Employee } from '../services/employee-service';
+// import {employees as employeesMock, Employee} from '../mocks/employees';
 
 @Component({
   selector: 'employee-new',
@@ -13,9 +14,9 @@ export class EmployeeNewComponent implements OnInit {
   // public salary:number = 0;
   public lastName:string = ''; // reativa [(ngModel)]
   // employees:Array<any> = [];
-  employees:Array<Employee> = employeesMock;
+  // employees:Array<Employee> = [];
 
-  constructor() {
+  constructor(public employeeService: EmployeeService) {
     // setTimeout(()=>{ this.name = "Mateus meu filho lindo" },3000)
     this.employee = {name:'',salary:0};
   }
@@ -25,16 +26,15 @@ export class EmployeeNewComponent implements OnInit {
   }
 
   addEmployee(event){
-
     let copy = Object.assign({},this.employee);
     // this.employees.push(this.name);
-    copy.salary = copy.salary >= 1000 ? 0 : copy.bonus;
-    this.employees.push(copy);
-    console.log(this.employees);
+    copy.bonus = copy.salary >= 1000 ? 0 : copy.bonus;
+    this.employeeService.addEmployee(copy);
+    console.log(this.employeeService.employees);
   }
 
   echo(){
-    return JSON.stringify(this.employees);
+    return JSON.stringify(this.employeeService.employees);
   }
 
 }

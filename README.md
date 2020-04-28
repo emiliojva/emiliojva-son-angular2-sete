@@ -203,3 +203,59 @@
       <input type="number" [(ngModel)]="employee.bonus"/>
     </div>
     ```
+## Camada de serviços
+  Service ou ServiceShare é a abordagem elegante e direta para compartilhar informações entre dois ou mais componentes.
+  - Criando um serviço via angular cli
+    ```
+    npm run ng g service serviceName
+    ```
+  - Uma classe passa a ser um Service com uso do @decoration @Injectable() acima da classe.
+    ```
+    /*Service ou ServiceShare*/
+    @Injectable({
+      providedIn: 'root' // Elimina a necessidade de importar no NgModule no metadados Providers
+    })
+    export class EmployeeService {}
+    ``` 
+  - Exemplo de um service provider
+    ```
+    import { Injectable } from '@angular/core';
+
+    export interface Employee
+    {
+      name: string;
+      salary: number;
+      bonus?:number;
+    }
+
+    /*Service ou ServiceShare*/
+    @Injectable({
+      providedIn: 'root' // Elimina a necessidade de importar no NgModule no metadados Providers
+    })
+    export class EmployeeService {
+
+      private _employees: Array<Employee> = [];
+
+      constructor() { }
+
+      addEmployee(employee: Employee){
+        let copy = Object.assign({},employee);
+        // this.employees.push(this.name);
+        copy.bonus = copy.salary >= 1000 ? 0 : copy.bonus;
+        this._employees.push(employee);
+      }
+
+      get employees(){
+        return this._employees;
+      }
+    }
+
+    ```
+
+## Gerando aplicação de produção
+  - ng serve faz está ação automaticamente.
+  - Para publicar a aplicação basta gerar os arquivos .js com o comando:
+  ```
+  npm run ng build
+  ```
+  - Após gerar build o bundled fica na pasta dist/ e testar com o pluigin do node http-server
